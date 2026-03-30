@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <p>Adults Plain Cotton T-Shirt</p>
+    <p>Price: $7.99</p>
+
+    <button onclick="addtocart();" >Add to Cart</button>
+    <button onclick="buynow();" >Buy now</button>
+
+</body>
+
+<script>
+
+function addtocart(){
+    alert('Added');
+}
+
+function buynow(){
+    
+    setTimeout(() => {
+        console.log('Loading...');
+    }, 100);
+
+    setTimeout(()=>{
+        alert('Purchased');
+    },2000);
+
+     
+}
+
+
+</script>
+
+</html>
