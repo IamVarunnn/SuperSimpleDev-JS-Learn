@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1></h1>
+    <button onclick="increasequantfour();  " >+4</button>
+    <button onclick="increasequantfive(); " >+5</button>
+    <button onclick="removeQunatity(); " >remove item</button>
+    <button onclick="removeQunatitytwo(); " >-2</button>
+    <button onclick="removeQunatitythree(); " >-3</button>
+
+</body>
+<script>
+
+    
+
+    let h1 = document.querySelector('h1');
+    let quantity = 0;
+
+     
+    
+    function increasequantfour(){
+        if(quantity + 4 > 10){
+            alert('The cart is full cant add more items');
+            return;
+        }
+        quantity += 4;
+        h1.innerText = quantity;
+    }
+
+    function increasequantfive(){
+        if(quantity + 5 > 10){
+            alert('The cart is full cant add more items');
+            return;
+        }
+        quantity += 5;
+        h1.innerText = quantity;
+    }
+
+    console.log(quantity);
+
+    function removeQunatity(){
+        
+        if(quantity - 1 < 0){
+            alert('Not enougth items');
+            return;
+        } 
+        quantity -= 1;
+         
+        h1.innerText = quantity;
+    }
+
+    function removeQunatitythree(){
+        if(quantity - 3 < 0){
+            alert('Not enougth items');
+            return;
+        } 
+            quantity -= 3;
+         
+        h1.innerText = quantity;
+    }
+
+    function removeQunatitytwo(){
+        if(quantity - 2 < 0){
+            alert('Not enougth items');
+            return;
+        } 
+        quantity -= 2;
+         
+
+        h1.innerText = quantity;
+    }
+
+    
+
+
+
+</script>
+</html>
