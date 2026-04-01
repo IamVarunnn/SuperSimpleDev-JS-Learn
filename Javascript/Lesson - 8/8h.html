@@ -39,7 +39,7 @@
 
 <script>
 
-    let calculation = '';
+    let calculation = localStorage.getItem('calculation') || '';
 
     let btn = document.querySelectorAll('button');
 
@@ -52,6 +52,8 @@
                 updateCal(key);
             }
             else if(key == '='){
+                calculation = eval(calculation).toString();
+                localStorage.setItem('calculation', calculation);
                 console.log(eval(calculation));
                
             }
@@ -63,7 +65,10 @@
     })
 
     function updateCal(value){
+
+        
         calculation += value;
+        localStorage.setItem('calculation', calculation);
         console.log(calculation);
     }
 
