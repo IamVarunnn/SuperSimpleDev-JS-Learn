@@ -17,25 +17,30 @@
    
 
     // console.log(randNo);
+   
     let h1 = document.querySelector('h1');
     let h2 = document.querySelector('h2');
     let res = '';
 
     
-    let score = {
+    let scoreObj = localStorage.getItem('score');
+
+    let score = JSON.parse(scoreObj) || {
         win : 0,
         lost : 0
     };
 
-    let scoreStr = JSON.stringify(score);
-
-    localStorage.setItem('score',scoreStr);
+   
 
    
 
 
     function playGuess(guess){
         let randNo = Math.random().toFixed(1);
+
+        let scoreStr = JSON.stringify(score);
+
+        localStorage.setItem('score',scoreStr);
 
         if(randNo < 0.5){
             res = 'Heads';
@@ -52,6 +57,8 @@
             score.lost++;
             h1.innerText = 'You Lost';
         }
+
+
 
         h2.innerText = `The total wins ${score.win} and lost ${score.lost}`;
     }
