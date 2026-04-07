@@ -38,9 +38,9 @@
     function playGuess(guess){
         let randNo = Math.random().toFixed(1);
 
-        let scoreStr = JSON.stringify(score);
+       
 
-        localStorage.setItem('score',scoreStr);
+       
 
         if(randNo < 0.5){
             res = 'Heads';
@@ -61,7 +61,12 @@
 
 
         h2.innerText = `The total wins ${score.win} and lost ${score.lost}`;
+         let scoreStr = JSON.stringify(score);
+
+         localStorage.setItem('score',scoreStr);
     }
+
+     h2.innerText = `The total wins ${score.win} and lost ${score.lost}`;
 
     
     let btn = document.querySelectorAll('button');
