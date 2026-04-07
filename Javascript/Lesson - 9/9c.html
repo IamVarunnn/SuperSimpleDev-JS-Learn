@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1></h1>
+    <button class="heads" >Heads</button>
+    <button class="tails" >Tails</button>
+
+</body>
+<script>
+
+    let heads = document.querySelector('.heads');
+    let tails = document.querySelector('.tails');
+    let h1 = document.querySelector('h1');
+
+    heads.addEventListener('click', ()=>{
+        h1.innerText = `You chose : Heads`;
+    });
+
+    tails.addEventListener('click', ()=>{
+        h1.innerText = `You chose : Tails`;
+    })
+
+
+
+</script>
+</html>

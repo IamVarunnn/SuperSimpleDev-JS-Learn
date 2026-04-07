@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <h1></h1>
+    <input class="input" type="text">
+    <input class="btn" type="button" value="Submit">
+</body>
+<script>
+
+    let input = document.querySelector('.input');
+    let btn = document.querySelector('.btn');
+    let h1 = document.querySelector('h1');
+
+    btn.addEventListener('click',(e)=>{
+        // console.log(input.value);
+        h1.innerText = `Your name is ${input.value}`;
+    });
+
+    input.addEventListener('keydown',(e)=>{
+        // console.log(input.value);
+        let key = e.key;
+        if(key === 'Enter'){
+            h1.innerText = `Your name is ${input.value}`;
+        }
+    })
+
+
+</script>
+</html>
