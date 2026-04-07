@@ -34,7 +34,7 @@
         let value = Number(inputElement.value);
 
         
-        if(value == '' || Number.isNaN(value) || value < 0){
+        if(inputElement.value == '' || Number.isNaN(value) || value < 0){
             alert('Enter a valid Number');
             return;
         }
@@ -45,7 +45,7 @@
 
         // Convert back to dollars at the end.
         document.querySelector('.js-total-cost')
-          .innerHTML = `$${cost / 100}`;
+          .innerHTML = `$${(cost / 100).toFixed(2)}`;
       }
     </script>
   </body>
