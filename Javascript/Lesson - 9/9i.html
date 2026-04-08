@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button class="show-quantity" onclick="showQuantity()" >Show Quantity</button>
+    <button class="add-to-cart" onclick="addQuantity(1)" >Add to Cart</button>
+    <button class="plustwo"  onclick="addQuantity(2)" >+2</button>
+    <button class="plusthree" onclick="addQuantity(3);" >+3</button>
+    <button class="plusfour" onclick="addQuantity(4);" >+4</button>
+    <button class="plusfive" onclick="addQuantity(5);" >+5</button>
+    <button class="reduce" onclick="reduceQuantity(1);" >Remove From cart</button>
+    <button class="reducetwo" onclick="reduceQuantity(2);" >-2</button>
+    <button class="reducethree" onclick="reduceQuantity(3);" >-3</button>
+    <p class="cart-quantity" ></p>
+
+</body>
+<script>
+
+    let quantity = 0;
+
+    function addQuantity(value){
+        quantity += value;
+        showQuantity();
+    }
+
+    function reduceQuantity(value){
+        
+        if(quantity - value >= 0){
+            quantity -= value;
+        }
+       
+        
+        showQuantity();
+    }
+
+
+    function showQuantity(){
+        let para = document.querySelector('.cart-quantity');
+        para.innerText = `Cart quantity : ${quantity}`;
+    }
+
+
+
+</script>
+</html>
