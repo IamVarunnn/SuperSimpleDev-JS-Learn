@@ -25,12 +25,15 @@
      console.log(age);
         console.log(isHoliday);
 
-    if((age >= 65 || age < 6) && isHoliday){
+    // if((age >= 65 || age < 6) && isHoliday){
         
-        console.log('You got a discount of 10%');
-    }
-    else{
-        console.log('Sorry! No discount available.');
-    }
+    //     console.log('You got a discount of 10%');
+    // }
+    // else{
+    //     console.log('Sorry! No discount available.');
+    // }
+
+    let res = (age >= 65 || age < 6) && (isHoliday) ? 'You got a discount of 10%' : 'No discount';
+    console.log(res);
 </script>
 </html>
