@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objects</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // const product = {
+    //     name : 'Micro',
+    //     value : 'Small',
+    //     "delivery-time" : '!00day',
+    // };
+
+    // delete product.name;
+
+    // // console.log(product);
+    // console.log(product[name]);
+    // console.log(product["delivery-time"]);
+
+    // const product = {
+    //     name : 'Micro',
+    //     value : 'Small',
+    //     "delivery-time" : '!00day',
+    //     ratings : {
+    //         stars : 9,
+    //     },
+
+    //     display : function display(){
+    //         alert('Hello');
+    //     }
+    // };
+
+    // product.display();
+
+    const product = {
+        name : 'Micro',
+        value : 'Small',
+        "delivery-time" : '!00day',
+        ratings : {
+            stars : 9,
+        },
+
+        display1 : function display(){
+            alert('Hello');
+        },
+
+        display(){
+            alert("hey");
+        }
+    };
+
+    //Converting Object to JSON
+    // let res = JSON.stringify(product);
+    // console.log(res);
+
+    // let obj = JSON.parse(res);
+
+    // console.log(obj);
+
+    // let {name} = product;
+    product.display();
+
+    console.log(name);
+
+</script>
+</html>
