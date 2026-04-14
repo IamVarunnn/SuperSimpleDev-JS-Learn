@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Object Pra</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // let product = {
+    //     name : 'basketball',
+    //     price : 2095,
+    // };
+
+    // product.price += 800;
+
+    // product['delivery-time'] = '3days';
+
+    // console.log(product['delivery-time']);
+
+
+    function comparePrice(product1, product2){
+
+        if(product1.price < product2.price){
+            return product1;
+        }
+
+        return product2;
+    }
+
+    function sameProduct(product1, product2){
+
+        if(product1.name === product2.name && product1.price === product2.price){
+            return true;
+        }
+
+        return false;
+    }
+
+
+    let product1 = {
+        name : 'volley',
+        price : 2099,
+    };
+
+    let product2 = {
+        name : 'basketball',
+        price : 95,
+    };
+
+    console.log(comparePrice(product1, product2))
+    console.log(sameProduct(product1, product2));
+
+
+    let str = 'hello';
+
+    console.log(str.repeat(2));
+
+</script>
+</html>
