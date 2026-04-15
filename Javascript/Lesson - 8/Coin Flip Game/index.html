@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Coin Flip Game</title>
+</head>
+<body>
+    
+    <button onclick=" playGame('heads'); " >Heads</button>
+    <button onclick=" playGame('tails'); " >Tails</button>
+    <button onclick="resetScore();" >Clear</button>
+
+</body>
+<script>
+
+    let scoreFromLs = localStorage.getItem('score');
+    
+    let scoreObj = JSON.parse(scoreFromLs);
+
+    let score = scoreObj || {
+        win : 0,
+        lost : 0
+       
+    };
+
+   
+    function calRes(){
+        let randNo = Math.random();
+        return randNo < 0.5 ? 'heads' : 'tails';
+
+    }
+
+    
+     
+
+    function playGame(value){
+        
+
+        let myValue = value;
+        let randNoValue = calRes();
+        let res = '';
+        if(myValue === randNoValue){
+            score.win++;
+            res = 'You Win!'
+        }
+        else{
+            score.lost++;
+            res = 'You Lost!'
+        }
+
+        let scoreStr = JSON.stringify(score);
+        localStorage.setItem('score', scoreStr);
+
+        alert(`Your choice ${myValue} and Computer choice ${randNoValue}. ${res}.
+        Final scores are Win : ${score.win} Lost : ${score.lost} `);
+    }
+     
+    function resetScore(){
+        score = {
+            win : 0,
+            lost : 0
+        };
+        localStorage.removeItem('score');
+        alert('Scores have been reset now!')
+    }
+</script>
+</html>
