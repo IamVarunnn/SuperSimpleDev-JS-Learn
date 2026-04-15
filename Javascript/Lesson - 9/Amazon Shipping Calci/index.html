@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon</title>
+</head>
+<body>
+    
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +10$ shipping</p>
+    <p>Orders over $40 = FREE shipping</p>
+    <input class="input-ship" type="number">
+    <button>Calculate</button>
+    <p class="finalvalue" ></p>
+     
+</body>
+<script>
+
+    let inputShip = document.querySelector('.input-ship');
+
+    let btn = document.querySelector('button');
+    let finalvalue = document.querySelector('.finalvalue');
+
+    btn.addEventListener('click',(e)=>{
+        let valueCal = inputShip.value;
+        let sum = 0;
+
+        if(valueCal < 40){
+            
+            sum = sum + valueCal + 10;
+             
+            finalvalue.innerHTML = sum;
+        }
+        console.log(inputShip.value);
+    });
+
+</script>
+
+</html>
