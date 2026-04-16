@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <input onkeydown="if(event.key === 'Enter'){
+        display();
+    }" class="input-text" type="text" placeholder="Enter your Name">
+    <input onclick="display()"  class="input-btn" type="button" value="Submit">
+</body>
+<script>
+
+    // let inputText = document.querySelector('.input-text');
+    // let btn = document.querySelector('.input-btn');
+
+    // btn.addEventListener('click',()=>{
+    //     alert(`Your name is ${inputText.value}`);    
+    // });
+
+    // inputText.addEventListener('keydown',(e)=>{
+    //     if(e.key == 'Enter'){
+    //         alert(`Your name is ${inputText.value}`);
+    //     }
+    // });
+
+    function display(){
+        let inputText = document.querySelector('.input-text');
+        alert(`Your name is ${inputText.value}`);   
+    }
+
+</script>
+</html>

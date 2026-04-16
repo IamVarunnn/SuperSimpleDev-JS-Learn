@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <button class="heads" >heads</button>
+    <button class="tails" >tails</button>
+    <p class="display" ></p>
+
+</body>
+<script>
+
+    
+
+
+    
+    // let heads = document.querySelector('.heads');
+    let btn = document.querySelectorAll('button');
+    let display = document.querySelector('.display');
+
+    btn.forEach((e)=>{
+        e.addEventListener('click',(e)=>{
+            display.innerHTML = e.target.innerHTML;
+            console.log(e);
+        })
+    })
+ 
+</script>
+</html>
