@@ -3,38 +3,59 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Amazon</title>
+    <title>Amazon Shipping Calci</title>
 </head>
 <body>
     
     <p>Amazon Shipping Calculator</p>
-    <p>Orders under $40 = +10$ shipping</p>
-    <p>Orders over $40 = FREE shipping</p>
-    <input class="input-ship" type="number">
-    <button>Calculate</button>
-    <p class="finalvalue" ></p>
-     
+    <p>Orders under $40 = +10 Shipping</p>
+    <p>Orders over $40 = Free Shipping</p>
+
+    <input class="input-text" type="number" placeholder="Cost of Order ">
+    <input class="btn" type="button"  value="Calculate">
+    <p class="typing" ></p>
+    <p class="display" ></p>
+
 </body>
 <script>
+     let btn = document.querySelector('.btn');
+       let inputText = document.querySelector('.input-text')
+    function calculate(){
+     
 
-    let inputShip = document.querySelector('.input-ship');
+        let display = document.querySelector('.display');
 
-    let btn = document.querySelector('button');
-    let finalvalue = document.querySelector('.finalvalue');
-
-    btn.addEventListener('click',(e)=>{
-        let valueCal = inputShip.value;
-        let sum = 0;
-
-        if(valueCal < 40){
-            
-            sum = sum + valueCal + 10;
-             
-            finalvalue.innerHTML = sum;
+        let sum = 10;
+        let valueNum = (Number)(inputText.value);
+        if(valueNum < 40){
+            sum += valueNum;
+            // console.log(sum);
+            display.innerHTML = `$${sum}`;
         }
-        console.log(inputShip.value);
+        else{
+            display.innerHTML = `$${valueNum}`;
+        }
+
+        inputText.value = '';
+    }
+
+    
+    btn.addEventListener('click',()=>{
+        // console.log(inputText.value);
+        calculate();
     });
 
-</script>
+    inputText.addEventListener('keydown',(e)=>{
+         
+        if(e.key === 'Enter'){
+            calculate();
+        }
+    })
 
+     
+</script>
 </html>
+
+<!-- 23mins -->
+
+<!-- remaining 37mins -->
