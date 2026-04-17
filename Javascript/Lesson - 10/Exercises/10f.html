@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add to cart</title>
+    <style>
+      .gaming,
+      .music,
+      .tech {
+        padding: 10px 20px;
+        border-radius: 5px;
+        border: none;
+        font-weight: 600;
+        color: black;
+        background-color: rgb(230, 230, 230);
+      }
+
+      .not-gaming,
+      .not-music,
+      .not-tech {
+        color: rgb(230, 230, 230);
+        background-color: black;
+      }
+    </style>
+  </head>
+  <body>
+    <button class="gaming" onclick="onOff('.gaming')">Gaming</button>
+    <button class="music" onclick="onOff('.music')">Music</button>
+    <button class="tech" onclick="onOff('.tech')">Tech</button>
+  </body>
+  <script>
+    function onOff(selector) {
+      let btn = document.querySelector(selector);
+
+      if (!btn.classList.contains("not-gaming")) {
+        btn.classList.add("not-gaming");
+      } else {
+        btn.classList.remove("not-gaming");
+      }
+    }
+
+    // function onoffTech(){
+    //     let btn = document.querySelector('.tech');
+
+    //     if(!btn.classList.contains('not-tech')){
+    //         btn.classList.add('not-tech');
+    //     }
+    //     else{
+    //         btn.classList.remove('not-tech');
+    //     }
+
+    // }
+  </script>
+</html>
+
+<!-- Start from 7:42:00 -->
