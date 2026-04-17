@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Youtube</title>
+    <style>
+
+    body{
+        /* font-family: ;
+        font-size: 20px;
+        font-weight: 400; */
+        /* font-weight: bold; */
+        /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+        font-family: Arial, Helvetica, sans-serif;
+    }        
+
+    .subscribe{
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: none;
+        color: white;
+        font-weight: bold;
+        background-color: black;
+        cursor: pointer;
+    }
+
+    .subscribed{
+        padding: 10px 20px;
+        border-radius: 20px;
+        border: none;
+        color: black;
+        font-weight: bold;
+        background-color:rgb(216, 216, 216);
+        cursor: pointer;
+    }
+
+    </style>
+</head>
+<body>
+    
+    <p>Youtube Subscribe Button</p>
+    <button class="subscribe" onclick="subscribe();" >Subscribe</button>
+
+</body>
+<script>
+
+   
+    function subscribe(){
+
+        let btn = document.querySelector('button');
+
+        if(btn.innerText === 'Subscribe'){
+           
+            btn.innerText = 'Subscribed';
+            btn.classList.add('subscribed');
+        }
+        else{
+           
+            btn.innerText = 'Subscribe';
+             btn.classList.remove('subscribed');
+        }
+    }
+
+</script>
+</html>
