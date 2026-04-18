@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    function minMax(arr){
+        let n = arr.length;
+
+        let obj = {
+            mini : n,
+            maxi : -999
+        };
+
+         
+        for(let i = 0; i < n; i++){
+            obj.mini = Math.min(obj.mini,arr[i]);
+            obj.maxi = Math.max(obj.maxi, arr[i]);
+        }
+
+        return obj;
+
+    }
+
+    let arr = [1, -3, 5];
+
+    console.log(minMax(arr));
+
+</script>
+</html>
