@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Amazon Shipping Calci</title>
+    <style>
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .input-text{
+
+            padding: 10px;
+           
+            border: 1px solid gray;
+        }
+
+        .btn{
+            padding: 10px;
+            background-color: green;
+            color: white;
+            border: none;
+            font-size: 15px;
+        }
+
+    </style>
+</head>
+<body>
+    
+    <p>Amazon Shipping Calculator</p>
+    <p>Orders under $40 = +10 Shipping</p>
+    <p>Orders over $40 = Free Shipping</p>
+
+    <input class="input-text" type="number" placeholder="Cost of Order ">
+    <input class="btn" type="button"  value="Calculate">
+    <p class="typing" ></p>
+    <p class="display" ></p>
+
+</body>
+<script>
+     let btn = document.querySelector('.btn');
+       let inputText = document.querySelector('.input-text')
+    function calculate(){
+     
+
+        let display = document.querySelector('.display');
+
+        let sum = 10;
+        let valueNum = (Number)(inputText.value);
+        if(valueNum < 40 && valueNum >= 0){
+            sum += valueNum;
+            // console.log(sum);
+            display.innerHTML = `$${sum}`;
+        }
+        else if(valueNum < 0){
+            display.innerHTML = `Error : value cannot be less than $0`;
+            display.style.color = 'red';
+        }
+        else{
+            display.innerHTML = `$${valueNum}`;
+        }
+
+        inputText.value = '';
+    }
+
+    
+    btn.addEventListener('click',()=>{
+        // console.log(inputText.value);
+        calculate();
+    });
+
+    inputText.addEventListener('keydown',(e)=>{
+         
+        if(e.key === 'Enter'){
+            calculate();
+        }
+    })
+
+     
+</script>
+</html>
+
+<!-- 23mins -->
+
+<!-- remaining 37mins -->
