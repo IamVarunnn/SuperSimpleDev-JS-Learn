@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11n</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+
+    let str = ['apple','grape','apple','apple'];
+
+
+    function countWords(arr){
+        let n = arr.length;
+
+        let res = {};
+        for(let i = 0; i < n; i++){
+            
+            if(res[arr[i]]){
+                res[arr[i]]++;
+            }
+            else{
+                res[arr[i]] = 1;
+            }
+        }
+
+        return res;
+    }
+
+    console.log(countWords(str));
+
+</script>
+</html>
