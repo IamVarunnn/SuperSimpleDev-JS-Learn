@@ -10,7 +10,7 @@
     <p>Todo List Practice 1</p>
     <input type="text" placeholder="Todo name">
    
-    <input type="date">
+    <input class="dueDate" type="date">
      <button>Add</button>
     <div class="display"></div>
 
@@ -20,19 +20,41 @@
     
     
 
-    let todoList = ['make dinner','Do study'];
+    let todoList = [
+        {
+            name : 'make dinner',
+            date : '12-1-2025',
+        },
+
+        {
+            name : 'Do study',
+            date : '12-12-2222',
+        }
+    ];
 
     renderTodoList();
+ 
 
     function renderTodoList(){
         let todoListHTML = '';
 
         for(let i = 0; i < todoList.length; i++){
-            let todo = todoList[i];
-            let html = `<p>${todo} </p>`;
+            // let todo = todoList[i];
+            let todoObj = todoList[i];
+
+            let name = todoObj.name;
+            let date = todoObj.date;
+
+            let html = `
+
+                <p>${name} ${date} <button onclick = "delTodo(${i}, 1);" >Delete</button> </p>
+
+            `;
 
             todoListHTML += html;
         }
+
+  
 
         console.log(todoListHTML);
 
@@ -51,10 +73,20 @@
     function Todo(){
         let inputText = document.querySelector('input');
         let display = document.querySelector('.display');
-        todoList.push(inputText.value);
+        let date = document.querySelector('.dueDate');
+        let dueDateI = date.value;
+        todoList.push({
+           name : inputText.value,
+           date : dueDateI
+        });
         console.log(todoList);
         inputText.value = '';
 
+        renderTodoList();
+    }
+
+    function delTodo(i, val){
+        todoList.splice(i, val);
         renderTodoList();
     }
 
