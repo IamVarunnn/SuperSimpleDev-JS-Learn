@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+
+    let arr = ['search','hello', 'world', 'search','good','search'];
+
+    let n = arr.length;
+
+    function searchEle(arr, k){
+        let ans = -1;
+        for(let i = 0; i < n; i++){
+
+            if(arr[i] === k){
+                ans =  i;
+                break;
+            }
+        }
+
+        return ans;
+    }
+
+    console.log(searchEle(arr, 'search'));
+    console.log(searchEle(arr, 'searc'));
+</script>
+</html>
