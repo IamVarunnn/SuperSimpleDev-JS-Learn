@@ -28,7 +28,20 @@
         return ans;
     }
 
-    console.log(searchEle(arr, 'search'));
-    console.log(searchEle(arr, 'searc'));
+    function uniqueArr(arr){
+        let ans = [];
+        let n = arr.length;
+        
+        for(let i = 0; i < n; i++){
+            if(searchEle(ans, arr[i]) === -1){
+                ans.push(arr[i]);
+            }
+        }
+
+        return ans;
+    }
+
+    console.log(uniqueArr(arr))
+
 </script>
 </html>

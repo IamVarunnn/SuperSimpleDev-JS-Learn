@@ -69,9 +69,11 @@
 <script>
 
     
-    
+    let todoObjT = localStorage.getItem('todoList');
 
-    let todoList = [
+    let todoObjP = JSON.parse(todoObjT);
+
+    let todoList = todoObjP || [
         {
             name : 'make dinner',
             date : '12-1-2025',
@@ -82,6 +84,7 @@
             date : '12-12-2222',
         }
     ];
+     
 
     renderTodoList();
  
@@ -95,6 +98,8 @@
 
             let name = todoObj.name;
             let date = todoObj.date;
+
+            
 
             let html = `
                 <div>${name}</div>
@@ -127,18 +132,36 @@
         let display = document.querySelector('.display');
         let date = document.querySelector('.dueDate');
         let dueDateI = date.value;
+
+        if(inputText.value === '' || dueDateI === ''){
+            return;
+        }
+
         todoList.push({
            name : inputText.value,
            date : dueDateI
         });
+
+     
+
+      
+
         console.log(todoList);
         inputText.value = '';
 
+          
+        addLocal();
         renderTodoList();
+    }
+
+    function addLocal(){
+        let todoListStr = JSON.stringify(todoList);
+        localStorage.setItem('todoList',todoListStr);
     }
 
     function delTodo(i, val){
         todoList.splice(i, val);
+        addLocal();
         renderTodoList();
     }
 
