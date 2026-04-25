@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+</head>
+<body>
+    
+    <p>TodoList Practice 1</p>
+
+    <input class="input_text" type="text" placeholder="Todo Name">
+    <button class="add_btn" onclick="addTodo();" >Add</button>
+
+    <div class="display" >Text</div>
+
+</body>
+
+<script>
+
+    let arr = ['make tea', 'wash'];
+
+    render();
+
+    function render(){
+        let todoListHTML = '';
+
+        for(let i = 0; i < arr.length; i++){
+            let todoele = arr[i];
+            let html = `<p>${todoele}</p>`;
+            todoListHTML += html;
+        }
+
+        console.log(todoListHTML);
+
+        let display = document.querySelector('.display');
+
+        display.innerHTML = todoListHTML;
+
+
+   }
+
+ 
+
+    function addTodo(){
+        let inputText = document.querySelector('.input_text');
+       
+        let inputValue = inputText.value;
+        arr.push(inputValue);
+
+        console.log(arr);   
+
+        inputText.value = '';
+
+        render();
+      
+    }
+
+
+   
+
+</script>
+</html>

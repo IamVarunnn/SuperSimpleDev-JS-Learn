@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>11d</title>
+
+    <style>
+
+        body{
+            background-color: black;
+        }
+
+    </style>
+
+</head>
+<body>
+    
+</body>
+<script>
+
+    let words = ['apple','apple','grape','apple'];
+
+    function countWord(words){
+
+        let obj = {};
+
+        for(let i = 0; i < words.length; i++){
+
+           let word = words[i];
+
+            if(!obj[word]){
+                obj[word] = 1;
+            }
+            else{
+                obj[word]++;
+            }
+             
+        }
+        
+        return obj;
+    }
+
+    console.log(countWord(words));
+    
+</script>
+</html>
