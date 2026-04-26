@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+    <style>
+
+        body{
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    let arr = ['egg','apple','egg', 'egg','ham'];
+
+    
+    
+    function removeEgg(arr){
+        let ans = [];
+
+       let count = 0;
+
+        for(let i = 0; i < arr.length; i++){
+            
+            if(arr[i] === 'egg'){
+                count++;
+            }
+            
+            if(arr[i] !== 'egg'){
+                ans.push(arr[i]);
+            }
+            else if(arr[i] === 'egg' && count > 2){
+                ans.push('egg');
+            }
+        }
+
+        return ans;
+    }
+
+    console.log(removeEgg(arr));
+
+
+
+    
+
+</script>
+</html>
