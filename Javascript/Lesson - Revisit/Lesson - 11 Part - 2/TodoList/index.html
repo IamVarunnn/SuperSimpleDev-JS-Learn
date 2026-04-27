@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList</title>
+
+    <style>
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+
+        }
+
+        .display-grid{
+            display: grid;
+            grid-template-columns: 200px 150px 100px;
+            /* grid-template-rows: 100px; */
+            gap: 10px;
+            align-items: center;
+        }
+
+        .display-input-grid {
+            margin-bottom: 10px;
+            align-items: stretch;
+        }
+
+        .input_text,.input_date{
+            font-size: 15px;
+            padding: 6px;
+        }
+
+        .add_btn,.del_btn{
+            background-color: green;
+            color: white;
+            border: none;
+            font-size: 15px;
+            cursor: pointer;
+            
+        }
+
+        .del_btn{
+            background: red;
+            padding: 8px;
+        }
+
+       
+
+    </style>
+
+</head>
+<body>
+    
+    <p>TodoList Practice 1</p>
+
+    <div class="display-input-grid display-grid">
+
+        <input class="input_text" type="text" placeholder="Todo Name">
+        <input class="input_date" type="date">
+        <button class="add_btn" onclick="addTodo();" >Add</button>
+
+    </div>
+
+    <div class="display display-grid" >Text</div>
+
+    
+
+    
+</body>
+
+<script>
+
+    let objTodo = localStorage.getItem('todos');
+    let objTodoO = JSON.parse(objTodo);
+
+    let arr = objTodoO ||  [];
+
+    render();
+
+    function render(){
+        let todoListHTML = '';
+
+        for(let i = 0; i < arr.length; i++){
+            let todoObj = arr[i];
+
+            let {name, dueDate} = todoObj;
+            // let name = todoObj.name;
+            // let dueDate = todoObj.dueDate;
+
+
+            let html = `
+                <div>${name}</div>
+                <div>${dueDate}</div>
+                <button class="del_btn" onclick="removeTodo(${i})" >Delete</button>
+                `;
+            todoListHTML += html;
+        }
+
+        console.log(todoListHTML);
+
+        let display = document.querySelector('.display');
+
+        display.innerHTML = todoListHTML;
+
+
+   }
+
+    function removeTodo(i){
+        arr.splice(i, 1); 
+        let arrStr = JSON.stringify(arr);
+        localStorage.setItem('todos', arrStr);
+        render();
+    }
+
+   
+
+ 
+
+    function addTodo(){
+        let inputText = document.querySelector('.input_text');
+       
+        let inputValue = inputText.value;
+
+        let inputDate = document.querySelector('.input_date');
+        let inputDateValue = inputDate.value;
+
+        if(inputValue === '' || inputDateValue === ''){
+            return;
+        }
+
+        let obj = {
+            name : inputValue, 
+            dueDate : inputDateValue
+        };
+
+        arr.push(obj);
+
+        let arrStr = JSON.stringify(arr);
+        localStorage.setItem('todos', arrStr);
+
+        console.log(arr);   
+
+        inputText.value = '';
+
+        render();
+      
+    }
+
+
+   
+
+</script>
+</html>

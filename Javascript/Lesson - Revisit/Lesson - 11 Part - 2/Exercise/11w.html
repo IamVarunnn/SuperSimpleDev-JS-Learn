@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Practice</title>
+    <style>
+
+        body{
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    let arr = ['hello','world','search', 'hello','good','search'];
+
+    
+    function searchInd(arr, k){
+
+        for(let i = 0; i < arr.length; i++){
+            if(arr[i] === k){
+                return true;
+               
+            }
+        }
+
+        return false;
+    }
+
+    function uniqueArr(arr){
+
+        let ans =  [];
+
+        for(let i = 0; i < arr.length; i++){
+
+            if(!searchInd(ans, arr[i])){
+                ans.push(arr[i]);
+            }
+           
+        }
+
+        return ans;
+    }
+
+
+
+    // console.log(searchInd(arr, 'hello'));
+    // searchInd(arr, 'search');
+    console.log(uniqueArr(arr));
+
+
+
+    
+
+</script>
+</html>
