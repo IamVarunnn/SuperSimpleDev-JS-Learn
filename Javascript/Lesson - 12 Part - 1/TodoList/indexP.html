@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TodoList Practice</title>
+    <style>
+
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .display-grid,.input-display-grid{
+            display: grid;
+            grid-template-columns: 200px 150px 100px;
+            gap: 10px;
+            align-items: center;
+            justify-self: stretch;
+             
+        }
+
+        .input-display-grid{
+            margin-bottom: 10px;
+       
+
+        }
+
+        .input_text,.input_date{
+            font-size: 15px;
+            padding: 6px;
+            
+        }
+
+        
+
+        .add_btn,.del_btn{
+            color: white;
+            background-color: green;
+            border: none;
+            font-size: 15px;
+             cursor: pointer;
+            height: 100%;
+             
+             
+        }
+
+        .del_btn{
+            color: white;
+            background-color: red;
+            padding: 10px;
+        }
+
+
+
+    </style>
+</head>
+<body>
+    
+    <p>Todo List Practice 1</p>
+
+    <div class="input-display-grid" >
+        <input class="input_text" type="text" placeholder="Enter Todo">
+        <input class="input_date" type="date">
+        <button class="add_btn" onclick="addTodo();" >Add</button>
+    </div>
+
+    <div class="display display-grid"></div>
+
+</body>
+<script>
+
+    let todoArr = [
+
+        {
+            name : 'make tea',
+            dueDate : '12-11-2000'
+        },
+
+        {   name : 'wash',
+            dueDate : '12-11-2001'
+        }
+    ];
+
+    render();
+    
+    function render(){
+        
+        let html = '';
+        
+        for(let i = 0; i < todoArr.length; i++){
+            let todoItemObj = todoArr[i];
+
+            let {name, dueDate} = todoItemObj;
+
+            html += `
+                    <div>${name}</div>
+                    <div>${dueDate}</div>
+                    <button class='del_btn' onclick = 'removeTodo(${i});' >Delete</button>
+                `;
+           
+        }
+
+        let displayHTML = document.querySelector('.display');
+
+        displayHTML.innerHTML = html;
+    }
+
+    function removeTodo(i){
+        todoArr.splice(i, 1);
+        render();
+    }
+
+    
+
+    function addTodo(){
+        let inputText = document.querySelector('.input_text');
+        let inputValue = inputText.value;
+        // console.log(inputText.value);
+
+        let inputDate = document.querySelector('.input_date');
+        let inputDateValue = inputDate.value;
+
+        let obj = {
+            name : inputValue,
+            dueDate : inputDateValue
+        };
+        // todoArr.push(inputValue);
+        todoArr.push(obj);
+
+        console.log(todoArr);
+
+        inputText.value = '';
+
+        render();
+    }    
+
+</script>
+</html>
