@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc</title>
+
+    <button onclick="add();" >Add</button>
+    <button onclick="remove();" >Remove</button>
+</head>
+<body>
+    
+</body>
+<script>
+
+    let title = document.querySelector('title');
+
+    // console.log(title.innerText);
+
+    let titleVal = title.innerText;
+    
+
+    let flag = false;
+
+    let count = 2;
+
+ 
+    setInterval(() => {
+
+         
+        
+        if(!flag && count > 0){
+            title.innerText = `(${count}) New Messages`;;
+            // console.log(text2);
+            flag = true;
+        }
+        else if(flag && count > 0){
+            title.innerText = 'App';
+            // console.log(text1);
+            flag = false;
+        }
+        else if(count === 0){
+            title.innerText = 'App';
+        }
+
+    }, 1000);
+
+    function remove(){
+
+        if(count - 1 >= 0){
+            count--;
+        }
+
+        console.log(count);
+    }
+
+    function add(){
+        count++;
+    }
+
+
+
+</script>
+</html>

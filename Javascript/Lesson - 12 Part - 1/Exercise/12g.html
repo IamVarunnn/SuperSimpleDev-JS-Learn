@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    let title = document.querySelector('title');
+
+    // console.log(title.innerText);
+
+    let titleVal = title.innerText;
+    
+    let text1 = 'New Messages';
+    let text2 = 'App';
+
+    let flag = false;
+
+    setInterval(() => {
+        
+        if(!flag){
+            title.innerText = text2;
+            console.log(text2);
+            flag = true;
+        }
+        else{
+            title.innerText = text1;
+            console.log(text1);
+            flag = false;
+        }
+
+    }, 1000);
+
+
+
+</script>
+</html>
