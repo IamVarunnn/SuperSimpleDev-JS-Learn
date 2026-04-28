@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+    <style>
+
+        body{
+            background-color: black;
+            color: white;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        .title{
+            font-size: 30px;
+            font-weight: bold;
+        }
+
+       
+
+        .outer{
+            height: 125px;
+            width: 125px;
+            border-radius: 50%;
+            cursor: pointer;
+            background-color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        button{
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            background-color: black;
+            cursor: pointer;
+
+        }
+
+        img{
+            height: 50px;
+            width: 50px;
+        }
+
+        .middle-div{
+            display: flex;
+            gap: 10px;
+        }
+
+        .text-p{
+            font-size: 25px;
+            font-weight: bold;
+        }
+
+        .reset-sc,.auto-play{
+            padding: 10px 15px;
+            border-radius: 10px;
+            color: white;
+            border: none;
+            font-size: 20px;
+            background-color: rgba(248, 212, 11, 0.96);
+            cursor: pointer;
+        }
+
+       
+        
+
+
+    </style>
+</head>
+<body>
+   
+    <div class="container">
+        <p class="title" >Rock Paper Scissors</p>
+        <!-- Rock - 1 -->
+        <!-- Paper - 2 -->
+        <!-- Scissors - 3 -->
+
+        <div class="middle-div">
+            <div class="outer" >
+                <button class="rock-btn"> 
+                <img src="images/rock-emoji.png" alt=""> </button>
+            </div>
+
+            
+            <div class="outer" >
+                <button class="paper-btn" ><img src="images/paper-emoji.png" alt=""></button>
+            </div>
+
+            <div class="outer" >
+                <button class="scissors-btn" ><img src="images/scissors-emoji.png" alt=""></button>
+            </div>
+
+        </div>
+        <p class="winner text-p" ></p>
+        <p class="choices text-p" ></p>
+        <p class="finalscore text-p" ></p>
+
+        <input class="reset-sc" onclick="" type="button" value="Reset Score">
+        <input class="auto-play" type="button" value="Auto Play">
+
+    </div>
+   
+</body>
+<script>
+
+    let scoreString = localStorage.getItem('score');
+
+    let scoreObj = JSON.parse(scoreString);
+
+    let resText = document.querySelector('.winner');
+    let choicesText = document.querySelector('.choices')
+    let scoreRes = document.querySelector('.finalscore');
+
+    let rock_btn = document.querySelector('.rock-btn');
+    let paper_btn = document.querySelector('.paper-btn');
+    let scissors_btn = document.querySelector('.scissors-btn');
+
+
+    let resetSc = document.querySelector('.reset-sc');
+    let auto_play = document.querySelector('.auto-play');
+
+   
+
+    resetSc.addEventListener('click',()=>{
+        resetScore()
+    });
+
+    rock_btn.addEventListener('click',()=>{
+        playGame('rock');
+    });
+
+    paper_btn.addEventListener('click',()=>{
+        playGame('paper');
+    });
+
+    scissors_btn.addEventListener('click',()=>{
+        playGame('scissors');
+    });
+
+
+    let bodyEle = document.querySelector('body');
+
+    bodyEle.addEventListener('keydown',(e)=>{
+        // let key = e.key;
+        let key = event.key;
+
+        console.log(key);
+
+        if(key === 'r'){
+            playGame('rock');
+        }
+        else if(key == 'p'){
+            playGame('paper');
+        }
+        else if(key === 's'){
+            playGame('scissors');
+        }
+        else{
+            alert('To play click ony r or p or s')
+        }
+    })
+
+    let score = scoreObj || {
+        win : 0,
+        lost : 0,
+        draw : 0
+    };
+
+    
+    scoreRes.innerHTML = `Wins : ${0} Lost : ${0} Tie : ${0}`
+    
+    
+    
+    
+    function getComputerMove(){
+        let randNo = Math.random();
+        console.log(randNo);
+        let computerMove = '';
+        if(randNo >= 0 && randNo < 1 / 3){
+            computerMove = 'rock';
+            
+        }
+        else if(randNo >= 1 / 3 && randNo < 2 / 3){
+            computerMove = 'paper';
+        }
+        else if(randNo >= 2 / 3&& randNo < 1){
+            computerMove = 'scissors';
+            
+        }
+
+        return computerMove;
+    }
+    
+    function getResult(computerMove, userMove){
+        let res = '';
+
+        if (computerMove === userMove) {
+            res = 'Tie';
+        }
+        else if (userMove === 'rock') {
+            res = (computerMove === 'scissors') ? 'You Won' : 'You Lost';
+        }
+        else if (userMove === 'paper') {
+            res = (computerMove === 'rock') ? 'You Won' : 'You Lost';
+        }
+        else if (userMove === 'scissors') {
+            res = (computerMove === 'paper') ? 'You Won' : 'You Lost';
+        }
+
+        
+        return res;
+    }
+    
+    function playGame(userMove){
+
+        let computerMove = getComputerMove();
+        
+        let res = getResult(computerMove, userMove);
+
+        
+        
+        if(res == 'You Won'){
+            score.win++;
+        }
+        else if(res == 'You Lost'){
+            score.lost++;
+        }
+        else if(res === 'Tie'){
+            score.draw++;
+        }
+
+        
+        localStorage.setItem('score',JSON.stringify(score));
+         
+        // console.log(resText);
+        resText.innerHTML = `${res}.`;
+        choicesText.innerHTML = `Your choice <img src = "images/${userMove}-emoji.png"> <br/><br/>
+        Computer choice <img src = "images/${computerMove}-emoji.png">`;
+
+        scoreRes.innerHTML = `Wins : ${score.win} Lost : ${score.lost} Tie : ${score.draw}`
+
+
+        // alert(`You picked ${userMove}. Computer picked ${computerMove}. ${res}.
+
+        // Total scores are Wins : ${score.win} Lost : ${score.lost} Tie : ${score.draw} `);
+
+    }
+
+     
+
+    function resetScore(){
+        // score.win = 0;
+        // score.lost = 0;
+        // score.draw = 0;
+        score = {
+            win : 0,
+            lost : 0,
+            draw : 0
+        };
+
+        resText.innerHTML = ``;
+        choicesText.innerHTML = ``;
+        scoreRes.innerHTML = `Wins : ${0} Lost : ${0} Tie : ${0}`;
+        localStorage.removeItem('score');
+
+        alert('Scores have now been reset. You can start a new Game')
+        
+    }
+    
+
+    let isAutoPlay = false;
+    let interValId;
+    function autoPlay(){
+        let autoPlayBtn = document.querySelector('.auto-play');
+
+        
+        if(!isAutoPlay){
+            interValId = setInterval(()=>{
+                let playMove = getComputerMove();
+                playGame(playMove);
+            }, 1000);
+            isAutoPlay = true;
+        }
+        else{
+            clearInterval(interValId);
+            isAutoPlay = false;
+        }
+
+        console.log(isAutoPlay);
+
+         
+    }
+
+
+    auto_play.addEventListener('click',()=>{
+        autoPlay();
+    });
+
+</script>
+</html>
