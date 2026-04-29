@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc</title>
+    <style>
+
+        body{
+            background-color: black;
+            color: white;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    document.body.innerHTML = 'Hello';
+    
+    function removeEggs(foods){
+
+        // let ans = foods.filter((ele)=>{
+        //     return ele != 'egg';
+        // });
+
+         let ans = foods.filter((ele)=> ele != 'egg');
+
+        return ans;
+    }
+
+    let foods = ['ham','egg','egg','apple'];
+
+    // document.body.innerHTML = addNum(arr, 11);
+    document.body.innerHTML = removeEggs(foods);
+    // console.log(countPos(addNum,2));
+
+</script>
+</html>

@@ -30,7 +30,7 @@
             align-items: center;
         }
 
-        button{
+        .main_btn{
             border-radius: 50%;
             width: 120px;
             height: 120px;
@@ -64,6 +64,21 @@
             cursor: pointer;
         }
 
+        .yes_btn,.no_btn{
+             padding: 10px 15px;
+            border-radius: 10px;
+            color: white;
+            border: none;
+            font-size: 20px;
+            background-color: rgba(255, 4, 0, 0.96);
+            cursor: pointer;
+        }
+
+        .no_btn{
+            background-color: green;
+            color: white;
+        }
+
        
         
 
@@ -80,17 +95,17 @@
 
         <div class="middle-div">
             <div class="outer" >
-                <button class="rock-btn"> 
+                <button class="rock-btn main_btn"> 
                 <img src="images/rock-emoji.png" alt=""> </button>
             </div>
 
             
             <div class="outer" >
-                <button class="paper-btn" ><img src="images/paper-emoji.png" alt=""></button>
+                <button class="paper-btn main_btn" ><img src="images/paper-emoji.png" alt=""></button>
             </div>
 
             <div class="outer" >
-                <button class="scissors-btn" ><img src="images/scissors-emoji.png" alt=""></button>
+                <button class="scissors-btn main_btn" ><img src="images/scissors-emoji.png" alt=""></button>
             </div>
 
         </div>
@@ -101,6 +116,7 @@
         <input class="reset-sc" onclick="" type="button" value="Reset Score">
         <input class="auto-play" type="button" value="Auto Play">
 
+        <p class="alert_msg"></p>
     </div>
    
 </body>
@@ -124,9 +140,7 @@
 
    
 
-    resetSc.addEventListener('click',()=>{
-        resetScore()
-    });
+    
 
     rock_btn.addEventListener('click',()=>{
         playGame('rock');
@@ -140,12 +154,22 @@
         playGame('scissors');
     });
 
+    auto_play.addEventListener('click',()=>{
+        autoPlay();
+    });
+
+    resetSc.addEventListener('click',()=>{
+        resetScore();
+    });
+
+   
+
 
     let bodyEle = document.querySelector('body');
 
     bodyEle.addEventListener('keydown',(e)=>{
         // let key = e.key;
-        let key = event.key;
+        let key = e.key;
 
         console.log(key);
 
@@ -158,9 +182,15 @@
         else if(key === 's'){
             playGame('scissors');
         }
-        else{
-            alert('To play click ony r or p or s')
+        else if(key === 'a'){
+            autoPlay();
         }
+        else if (key === 'f') {
+            
+            resetScore();
+        }
+ 
+         
     })
 
     let score = scoreObj || {
@@ -173,6 +203,41 @@
     scoreRes.innerHTML = `Wins : ${0} Lost : ${0} Tie : ${0}`
     
     
+    function alertMessage(){
+        let alertMessage = document.querySelector('.alert_msg');
+
+        let html = '';
+
+        html += `Are you sure you want to reset the scores ? <button class = 'yes_btn' >Yes</button> <button class = 'no_btn' >No</button>`;
+
+        alertMessage.innerHTML = html;
+
+        let yes_btn = document.querySelector('.yes_btn');
+
+        let no_btn = document.querySelector('.no_btn');
+
+        yes_btn.addEventListener('click',()=>{
+             score = {
+                win : 0,
+                lost : 0,
+                draw : 0
+            };
+
+            resText.innerHTML = ``;
+            choicesText.innerHTML = ``;
+            scoreRes.innerHTML = `Wins : ${0} Lost : ${0} Tie : ${0}`;
+            localStorage.removeItem('score');
+
+            alert('Scores have now been reset. You can start a new Game')
+            alertMessage.innerHTML = '';
+        });
+
+        no_btn.addEventListener('click',()=>{
+            alertMessage.innerHTML = '';
+            return;
+        })
+        
+    }
     
     
     function getComputerMove(){
@@ -255,38 +320,41 @@
         // score.win = 0;
         // score.lost = 0;
         // score.draw = 0;
-        score = {
-            win : 0,
-            lost : 0,
-            draw : 0
-        };
 
-        resText.innerHTML = ``;
-        choicesText.innerHTML = ``;
-        scoreRes.innerHTML = `Wins : ${0} Lost : ${0} Tie : ${0}`;
-        localStorage.removeItem('score');
+        alertMessage();
 
-        alert('Scores have now been reset. You can start a new Game')
+        
         
     }
     
 
     let isAutoPlay = false;
     let interValId;
+  
+
+    
+
     function autoPlay(){
         let autoPlayBtn = document.querySelector('.auto-play');
+        
 
+        // console.log(autoPlayBtnValue);
         
         if(!isAutoPlay){
             interValId = setInterval(()=>{
                 let playMove = getComputerMove();
                 playGame(playMove);
+                autoPlayBtn.value = 'Stop Playing';
             }, 1000);
             isAutoPlay = true;
+            
+            
         }
         else{
             clearInterval(interValId);
             isAutoPlay = false;
+             autoPlayBtn.value = 'Auto Play';
+
         }
 
         console.log(isAutoPlay);
@@ -295,9 +363,7 @@
     }
 
 
-    auto_play.addEventListener('click',()=>{
-        autoPlay();
-    });
+   
 
 </script>
 </html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Doc</title>
+    <style>
+
+        body{
+            background-color: black;
+            color: white;
+        }
+
+        
+
+    </style>
+</head>
+<body>
+    
+</body>
+<script>
+
+    document.body.innerHTML = 'Hello';
+    
+    function removeEggs(foods){
+
+        let count = 0;
+
+        let ans = foods.filter((ele)=>{
+
+            if(ele == 'egg' && count < 2){
+                count++;
+                return false;
+            }
+
+            return true;
+        });
+        
+
+        return ans;
+    }
+
+    let foods = ['egg','apple','egg','egg','ham'];
+
+   
+</script>
+</html>

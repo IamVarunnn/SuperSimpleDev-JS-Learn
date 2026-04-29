@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+</body>
+<script>
+
+    // let arr = [1, 2, 3];
+
+    // let nums = arr.filter((e)=>{
+    //     return e >= 2;
+    // });
+
+    // let numss = arr.map((e)=>{
+    //     return e*e;
+    // });
+
+    let arr = [1, -1, 2, -2];
+
+    let ans = arr.filter((val, ind)=>{
+        
+        if(val > 0){
+            return true;
+        }
+
+        return false;
+    })
+
+    console.log(ans);
+    // console.log(numss);
+
+</script>
+</html>
