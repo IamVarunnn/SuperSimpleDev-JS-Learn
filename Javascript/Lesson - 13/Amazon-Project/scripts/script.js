@@ -114,7 +114,6 @@ addToCartBtn.forEach((button) => {
     // console.log('hey');
     const { productId } = button.dataset;
 
-    let matchingItem;
 
     let selectDrop = document.querySelector(
       `.js-quantity-selector-${productId}`,
@@ -122,9 +121,24 @@ addToCartBtn.forEach((button) => {
 
     let quantity = Number(selectDrop.value);
 
-    console.log(quantity);
+    // console.log(quantity);
 
-    let styleId = document.querySelector(`.added-to-cart-${productId}`);
+   
+
+    clearTimeoutStyle(productId);
+
+    addtoCartItems(productId, quantity);
+
+    showQuantity();
+
+    
+  });
+});
+
+
+
+function clearTimeoutStyle(productId){
+   let styleId = document.querySelector(`.added-to-cart-${productId}`);
   
     styleId.style.opacity = 1;
 
@@ -133,10 +147,12 @@ addToCartBtn.forEach((button) => {
     intervalId =  setTimeout(() => {
       styleId.style.opacity = 0;
     }, 2000);
+}
 
-    
 
-    cart.forEach((item) => {
+function addtoCartItems(productId, quantity){
+  let matchingItem;
+  cart.forEach((item) => {
       if (productId === item.productId) {
         matchingItem = item;
       }
@@ -150,10 +166,11 @@ addToCartBtn.forEach((button) => {
         quantity,
       });
     }
+}
 
-    
 
-    let cartQuantity = 0;
+function showQuantity(){
+  let cartQuantity = 0;
 
     cart.forEach((item) => {
       cartQuantity += item.quantity;
@@ -165,8 +182,4 @@ addToCartBtn.forEach((button) => {
 
     cartCount.innerText = cartQuantity;
     console.log(cart);
-  });
-});
-
-
- 
+}
