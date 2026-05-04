@@ -105,6 +105,8 @@ prodcutJs.innerHTML = productsHTML;
 
 let addToCartBtn = document.querySelectorAll(".js-add-to-cart");
 
+let timeouts = {};
+
 let intervalId;
 
 addToCartBtn.forEach((button) => {
@@ -126,7 +128,7 @@ addToCartBtn.forEach((button) => {
   
     styleId.style.opacity = 1;
 
-    clearInterval(intervalId);
+    clearTimeout(timeouts[intervalId]);
 
     intervalId =  setTimeout(() => {
       styleId.style.opacity = 0;
