@@ -142,9 +142,9 @@ function clearTimeoutStyle(productId){
   
     styleId.style.opacity = 1;
 
-    clearTimeout(timeouts[intervalId]);
+    clearTimeout(timeouts[productId]);
 
-    intervalId =  setTimeout(() => {
+    timeouts[productId] =  setTimeout(() => {
       styleId.style.opacity = 0;
     }, 2000);
 }
