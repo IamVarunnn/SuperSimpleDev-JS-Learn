@@ -2,8 +2,7 @@
 import { cart, removeFromCart } from "../data/cart.js";
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utlis/money.js";
-
-
+ 
 let cartSummayHTML = "";
 
 cart.forEach((cartItem) => {
@@ -123,4 +122,6 @@ delLink.forEach((link)=>{
 
         itemContainer.remove();
     })
-})
+});
+
+ 
