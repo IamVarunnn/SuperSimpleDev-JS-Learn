@@ -71,5 +71,29 @@ export function removeFromCart(prodcutId){
 }
 
 export function cartStyleIcon(selecter){
-  selecter.innerText = showQuantity();
+  selecter.innerText = `${showQuantity()}`;
+}
+
+export function udpateCheckQuantity(productId, quantity){
+    let matchingItem;
+        
+        cart.forEach((item)=>{
+            if(productId === item.productId){
+                matchingItem = item;
+            }
+        });
+    
+    
+        if(matchingItem){
+            matchingItem.quantity = 0;
+            matchingItem.quantity += quantity;
+        }
+        else{
+            cart.push({
+                productId,
+                quantity,
+            });
+        }
+        
+    saveToStorage();
 }
