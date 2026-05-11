@@ -4,6 +4,7 @@ import { formatCurrency } from "./utils/money.js";
 import { removeFromCart } from "../data/cart.js";
 
 hello();
+console.log(dayjs());
 
 let cartSummaryHTML = "";
 
