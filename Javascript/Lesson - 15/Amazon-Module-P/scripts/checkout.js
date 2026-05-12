@@ -2,9 +2,24 @@ import { cart, cartStyleIcon, showQuantity, udpateCheckQuantity } from "../data/
 import { products } from "../data/products.js";
 import { formatCurrency } from "./utils/money.js";
 import { removeFromCart } from "../data/cart.js";
+import { hello } from "https://unpkg.com/supersimpledev@1.0.1/hello.esm.js";
+import  dayjs  from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
+
 
 hello();
 console.log(dayjs());
+
+let today = new dayjs();
+
+
+let deliverDate =  today.add(7, 'days');
+
+console.log(deliverDate);
+
+let formatDate =  deliverDate.format('dddd, MMMM, YYYY');
+console.log(formatDate);
+
+
 
 let cartSummaryHTML = "";
 
