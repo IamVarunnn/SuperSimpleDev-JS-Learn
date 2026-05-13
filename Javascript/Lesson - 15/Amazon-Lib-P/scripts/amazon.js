@@ -110,37 +110,3 @@ let cartQuantityCount = document.querySelector('.cart-quantity');
 cartStyleIcon(cartQuantityCount);
 
 
-
-function deliveryOptionsHTML(){
-
-    let html = '';
-
-    deliveryOptions.forEach((deliveryItem)=>{
-        const today = dayjs();
-        const deliveryDate = today.add(
-            deliveryItem.deliveryDays,
-            'days'
-        );
-
-        const dateString = deliveryDate.format('dddd ', 'MMMM  D',)
-
-        const priceString = deliveryItem.priceCents  === 0 ? 'FREE' : `$${formatCurrency(deliveryItem.priceString)} -`;
-        html += `
-        <div class="delivery-option">
-            <input type="radio" checked
-            class="delivery-option-input"
-            name="delivery-option-${productId}">
-            <div>
-            <div class="delivery-option-date">
-                Tuesday, June 21
-            </div>
-            <div class="delivery-option-price">
-                FREE Shipping
-            </div>
-            </div>
-        </div>
-        `;
-    });
-
-    return html;
-}
