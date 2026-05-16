@@ -7,7 +7,7 @@ export let deliveryOptions = [
 
     },
     {
-        id : '3',
+        id : '2',
         deliveryDays : 3,
         priceCents : 499
     },
