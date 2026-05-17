@@ -1,4 +1,4 @@
-import { cart } from "../../data/cart.js";
+import { cart, showQuantity, udpateCheckQuantity, cartStyleIcon } from "../../data/cart.js";
 import { getDeliveryOption } from "../../data/deliveryOptions.js";
 import { getProduct } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
@@ -7,6 +7,7 @@ export function renderPaymentSummary(){
 
     let productPriceCents = 0;
     let shippingCostCents = 0;
+     
 
     cart.forEach((cartItem) => {
         let product = getProduct(cartItem.productId);
@@ -14,9 +15,17 @@ export function renderPaymentSummary(){
 
         productPriceCents += (product.priceCents * cartItem.quantity);
         shippingCostCents += (deliveryOption.priceCents);
+
+        
         
     });
 
+ 
+    let cound = document.querySelector('.cartCount');  
+ 
+
+ 
+ 
     const totalBeforeTaxCents = productPriceCents + shippingCostCents;
 
     const taxCents = totalBeforeTaxCents * 0.1;
@@ -29,7 +38,7 @@ export function renderPaymentSummary(){
         </div>
 
         <div class="payment-summary-row">
-            <div>Items (3):</div>
+            <div>Items (<span class="cartCount" ></span>):</div>
             <div class="payment-summary-money">$${formatCurrency(productPriceCents)}</div>
         </div>
 
@@ -63,3 +72,5 @@ export function renderPaymentSummary(){
     paymentInner.innerHTML = paymentSummaryHTML;
 
 }
+
+ 
