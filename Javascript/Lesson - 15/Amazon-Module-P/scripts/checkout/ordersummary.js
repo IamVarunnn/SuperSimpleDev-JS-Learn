@@ -2,9 +2,10 @@ import { cart, cartStyleIcon, showQuantity, udpateCheckQuantity, updateDeliveryO
 import { getProduct, products } from "../../data/products.js";
 import { formatCurrency } from "../utils/money.js";
 import { removeFromCart } from "../../data/cart.js";
-import { deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
+import { calculateDeliveryDate, deliveryOptions, getDeliveryOption } from "../../data/deliveryOptions.js";
 import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
 import { renderPaymentSummary } from "./paymnetSummary.js";
+import { renderCheckoutHeader } from "./checkoutHeader.js";
 
  
 
@@ -29,9 +30,8 @@ export function renderOrderSummary(){
 
         
 
-        let todayDate = new dayjs();
-        let deliveryDays = deliveryOption.deliveryDays;
-        let deliveryDate = todayDate.add(deliveryDays, "days");
+       
+        let deliveryDate = calculateDeliveryDate(deliveryOption);
 
         let dateString = deliveryDate.format("dddd, MMMM, D");
 
@@ -97,9 +97,8 @@ export function renderOrderSummary(){
 
         deliveryOptions.forEach((deliveryOption)=>{
 
-            let todayDate = new dayjs();
-            let deliveryDays = deliveryOption.deliveryDays;
-            let deliveryDate = todayDate.add(deliveryDays, "days");
+            
+            let deliveryDate = calculateDeliveryDate(deliveryOption);
 
             let dateString = deliveryDate.format("dddd, MMMM, D");
 
@@ -146,16 +145,17 @@ export function renderOrderSummary(){
             // console.log(productId);
             removeFromCart(productId);
             // console.log(cart);
-            cartItemId.remove();
+            
+            renderOrderSummary();
             
             let checkoutIcon = document.querySelector('.checkLink');
 
-            cartStyleIcon(checkoutIcon);
+            renderCheckoutHeader();
+            renderPaymentSummary();
         });
     });
 
-    let checkoutIcon = document.querySelector('.checkLink');
-    cartStyleIcon(checkoutIcon);
+   
     
     let updateBtn = document.querySelectorAll('.update-link');
 
@@ -168,11 +168,6 @@ export function renderOrderSummary(){
             container.classList.add('is-editing-quantity');
 
             container.classList.add('is-editing-quantity');
-
-
-            let checkoutIcon = document.querySelector('.checkLink');
-            cartStyleIcon(checkoutIcon);
-
             
         });
     });
@@ -202,8 +197,8 @@ export function renderOrderSummary(){
             // console.log(cart.quantity);
             
             udpateCheckQuantity(productId, inputLabelVal);
-            let checkoutIcon = document.querySelector('.checkLink');
-            cartStyleIcon(checkoutIcon);
+            renderCheckoutHeader();
+            renderPaymentSummary();
         })
     });
 
@@ -219,7 +214,7 @@ export function renderOrderSummary(){
             renderOrderSummary();
             renderPaymentSummary();
         })
-    })
+    });
  
 }
 

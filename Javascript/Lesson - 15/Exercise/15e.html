@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        body{
+            background-color: black;
+        }
+
+    </style>
+</head>
+<body>
+    
+</body>
+<script type="module">
+
+    import dayjs from "https://unpkg.com/supersimpledev@8.5.0/dayjs/esm/index.js";
+
+    function isWeekend(date){
+
+        let weekendDay = date.format("dddd");
+
+        return weekendDay === 'Saturday' || weekendDay === 'Sunday';
+    }
+
+
+    let date = new dayjs();
+
+    let nonWeekDay = date.add(2,'days');
+    console.log(nonWeekDay.format('dddd'));
+    console.log(isWeekend(nonWeekDay));
+
+    nonWeekDay = date.add(4,'days');
+    console.log(nonWeekDay.format('dddd'));
+    console.log(isWeekend(nonWeekDay));
+
+    nonWeekDay = date.add(6,'days');
+    console.log(nonWeekDay.format('dddd'));
+    console.log(isWeekend(nonWeekDay));
+
+
+ 
+
+</script>
+</html>

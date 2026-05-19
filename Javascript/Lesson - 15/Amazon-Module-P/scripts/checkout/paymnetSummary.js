@@ -21,7 +21,7 @@ export function renderPaymentSummary(){
     });
 
  
-    let cound = document.querySelector('.cartCount');  
+ 
  
 
  
@@ -38,7 +38,7 @@ export function renderPaymentSummary(){
         </div>
 
         <div class="payment-summary-row">
-            <div>Items (<span class="cartCount" ></span>):</div>
+            <div>Items (<span class="cartCount">3</span>):</div>
             <div class="payment-summary-money">$${formatCurrency(productPriceCents)}</div>
         </div>
 
@@ -70,6 +70,10 @@ export function renderPaymentSummary(){
     let paymentInner = document.querySelector('.js-payment-summary');
 
     paymentInner.innerHTML = paymentSummaryHTML;
+
+    let cartCount = document.querySelector('.cartCount');
+    cartCount.innerHTML = showQuantity();
+ 
 
 }
 
