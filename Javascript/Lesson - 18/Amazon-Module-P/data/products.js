@@ -136,7 +136,7 @@ export function loadProducts(renderProd) {
       return new Product(productDetails);
     });
 
-    console.log(products);
+    console.log("Load Products");
 
     renderProd();
   });
