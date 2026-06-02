@@ -8,42 +8,41 @@ import { loadCart } from "../data/cart.js";
 
 
 
+async function loadPage(){
+  
 
-
-// new Promise((resolve)=>{
-//     loadProducts(()=>{
-//         resolve();
-//     });    
-// }).then(()=>{
-//     renderOrderSummary();
-//     renderPaymentSummary();
-//     renderCheckoutHeader();
-// });
-
-
-// loadProducts(()=>{
-//     loadCart(()=>{
-//         renderOrderSummary();
-//         renderPaymentSummary();
-//         renderCheckoutHeader();
-//     });
-// });
-
-Promise.all([
-    loadProductsFetch(),
-
-    new Promise((resolve)=>{
+    await loadProductsFetch();
+    
+    const val =  await new Promise((resolve)=>{
         loadCart(()=>{
-            resolve('value12')
+            resolve();
         });
-    })
+    });
 
-]).then((values)=>{
-    // console.log(values);
     renderOrderSummary();
     renderPaymentSummary();
     renderCheckoutHeader();
-});;
+   
+}
+
+loadPage();
+
+
+// Promise.all([
+//     loadProductsFetch(),
+
+//     new Promise((resolve)=>{
+//         loadCart(()=>{
+//             resolve('value12')
+//         });
+//     })
+
+// ]).then((values)=>{
+//     // console.log(values);
+//     renderOrderSummary();
+//     renderPaymentSummary();
+//     renderCheckoutHeader();
+// });;
 
 
 // new Promise((resolve)=>{
