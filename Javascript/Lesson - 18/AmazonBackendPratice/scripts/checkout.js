@@ -6,12 +6,22 @@ import { loadProducts } from "../data/products.js";
 // import '../data/backend-pratice.js';
 
 
- 
-loadProducts(()=>{
-    renderOrderSummary();
-    renderPaymentSummary();
-    renderCheckoutHeader();
+new Promise((resolve)=>{
+    console.log('Start Prom');
+    loadProducts(()=>{
+        console.log('Finished Loading');
+        // resolve();
+    });
+}).then(()=>{
+    console.log('Next Step');
 });
+
+ 
+// loadProducts(()=>{
+//     renderOrderSummary();
+//     renderPaymentSummary();
+//     renderCheckoutHeader();
+// });
 
 
  
