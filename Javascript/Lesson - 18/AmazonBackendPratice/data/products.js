@@ -145,6 +145,7 @@ export function loadProducts(fun){
 
 }
 
+
  
 /*
 export const products = [
