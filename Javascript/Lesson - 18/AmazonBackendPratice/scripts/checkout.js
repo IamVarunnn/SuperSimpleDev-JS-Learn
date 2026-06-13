@@ -1,33 +1,46 @@
 import { renderOrderSummary } from "./checkout/ordersummary.js";
 import { renderPaymentSummary } from "./checkout/paymnetSummary.js";
 import { renderCheckoutHeader } from "./checkout/checkoutHeader.js";
-import { loadProducts } from "../data/products.js";
+import { loadProducts, loadProductsFetch } from "../data/products.js";
 import { loadCart } from "../data/cart.js";
+ 
 
 // import '../data/cart-class.js';
 // import '../data/backend-pratice.js';
 
-
-Promise.all([
+async function loadPage() {
     
-    new Promise((resolve)=>{
-   
-        loadProducts(()=>{
-            resolve();
-        });
+    await loadProductsFetch();
 
-    }),
-    new Promise((resolve)=>{
+    await new Promise((resolve)=>{
         loadCart(()=>{
             resolve();
         });
-    })
+    });
 
-]).then(()=>{
     renderOrderSummary();
     renderPaymentSummary();
     renderCheckoutHeader();
-});
+
+}
+
+loadPage();
+
+
+// Promise.all([
+    
+//     loadProductsFetch(),
+//     new Promise((resolve)=>{
+//         loadCart(()=>{
+//             resolve();
+//         });
+//     })
+
+// ]).then(()=>{
+//     renderOrderSummary();
+//     renderPaymentSummary();
+//     renderCheckoutHeader();
+// });
 
 
 // new Promise((resolve)=>{
